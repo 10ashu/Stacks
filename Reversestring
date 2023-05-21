@@ -1,0 +1,19 @@
+#include<iostream>
+#include<stack>
+using namespace std;
+int main()
+{
+    string st="Ashutosh";
+    stack<char> s;
+    for(int i=0;i<st.length();i++)
+    {
+        s.push(st[i]);
+    }
+    while (!s.empty())
+    {
+        cout<<s.top()<<" ";
+        s.pop();
+    }
+    
+    return 0;
+}
