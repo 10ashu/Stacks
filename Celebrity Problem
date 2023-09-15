@@ -1,0 +1,40 @@
+class Solution 
+{
+    public:
+    //Function to find if there is a celebrity in the party or not.
+    int celebrity(vector<vector<int> >& M, int n) 
+    {
+        stack<int> st;
+        for(int i=0;i<n;i++)
+        {
+            st.push(i);
+        }
+        while(st.size()!=1)
+        {
+            int top1=st.top(); st.pop();
+            int top2=st.top(); st.pop();
+            if(M[top1][top2])
+            {
+                st.push(top2);
+            }
+            else
+            {
+                st.push(top1);
+            }
+        }
+        int mightbecelebrity=st.top();
+        for(int i=0;i<n;i++)
+        {
+            if(M[mightbecelebrity][i]!=0)
+            {
+                return -1;
+            }
+        }
+        for(int i=0;i<n;i++)
+        {
+            if(M[i][mightbecelebrity]!=1&&i!=mightbecelebrity)
+            return -1;
+        }
+        return mightbecelebrity;
+    }
+};
